@@ -25,7 +25,7 @@ namespace WebApplication2.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
         }
-
+        
         public class WeatherForecast
         {
             public string DateFormatted { get; set; }

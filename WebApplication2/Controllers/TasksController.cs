@@ -13,9 +13,9 @@ namespace WebApplication2.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        private readonly todoappContext _context;
+        private readonly TodoappContext _context;
 
-        public TasksController(todoappContext context)
+        public TasksController(TodoappContext context)
         {
             _context = context;
         }

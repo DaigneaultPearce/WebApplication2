@@ -9,13 +9,14 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ListsController : ControllerBase
     {
-        private readonly todoappContext _context;
+        private readonly TodoappContext _context;
 
-        public ListsController(todoappContext context)
+        public ListsController(TodoappContext context)
         {
             _context = context;
         }

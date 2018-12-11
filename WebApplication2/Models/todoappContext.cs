@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebApplication2.Models
 {
-    public partial class todoappContext : DbContext
+    public partial class TodoappContext : DbContext
     {
-        public todoappContext()
+        public TodoappContext()
         {
         }
 
-        public todoappContext(DbContextOptions<todoappContext> options)
+        public TodoappContext(DbContextOptions<TodoappContext> options)
             : base(options)
         {
         }

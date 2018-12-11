@@ -24,12 +24,21 @@ namespace WebApplication2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            var connection = @"Server=DESKTOP-Q5N7L53\\SQLEXPRESS;Database=todoapp;Trusted_Connection=True;";
-            services.AddDbContext<todoappContext>(options => options.UseSqlServer(connection));
+            var connection = "Server=DESKTOP-Q5N7L53\\SQLEXPRESS;Database=todoapp;Trusted_Connection=True;";
+            services.AddDbContext<TodoappContext>(options => options.UseSqlServer(connection));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
         }
 
@@ -45,7 +54,7 @@ namespace WebApplication2
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
