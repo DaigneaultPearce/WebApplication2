@@ -1,0 +1,43 @@
+<p>
+  list works!
+</p>
+
+<p *ngIf="!listss"><em>Loading...</em></p>
+
+<table class='table' *ngIf="listss">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>tasks</th>
+      <th>Commands</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let list of listss">
+      <td>{{ list.id }}</td>
+      <td>{{ list.name }}</td>
+      <ng-container *ngFor="let task of taskss">
+      <td *ngIf="task.listid == list.id">{{task.desc}}</td>
+      <</ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<table class='table' *ngIf="listss">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>tasks</th>
+      <th>Commands</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let list of listss">
+      <td>{{ list.id }}</td>
+      <td>{{ list.name }}</td>
+      <ul *ngFor="let task of taskss">{{task.desc}}</ul>
+    </tr>
+  </tbody>
+</table>
