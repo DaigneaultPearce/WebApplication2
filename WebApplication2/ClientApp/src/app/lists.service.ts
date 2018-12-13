@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getBaseUrl } from '../main';
+import { List } from './list';
 
 @Injectable()
 export class ListsService {
@@ -14,16 +15,10 @@ export class ListsService {
 
   public get() {
     // Get all list data
-    return this.http.get<Lists[]>(this.accessPointUrl + 'api/lists');
+    return this.http.get<List[]>(this.accessPointUrl + 'api/lists');
   }
 
-  public add(payload) {
-    return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
+  public add(list: List) {
+    return this.http.post<List>(this.accessPointUrl + 'api/lists', list, { headers: this.headers });
   }
-}
-
-interface Lists {
-  id: number;
-  name: string;
-  //tasks: Tasks[];
 }

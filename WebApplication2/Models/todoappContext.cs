@@ -23,7 +23,8 @@ namespace WebApplication2.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-Q5N7L53\\SQLEXPRESS;Database=todoapp;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlite("Server=DESKTOP-Q5N7L53\\SQLEXPRESS;Database=todoapp;Trusted_Connection=True;");
+                optionsBuilder.UseSqlite("Data Source = ./wwwroot/App_Data/todoapp.db");
             }
         }
 

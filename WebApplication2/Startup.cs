@@ -24,8 +24,9 @@ namespace WebApplication2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            var connection = "Server=DESKTOP-Q5N7L53\\SQLEXPRESS;Database=todoapp;Trusted_Connection=True;";
-            services.AddDbContext<TodoappContext>(options => options.UseSqlServer(connection));
+            //var connection = "Server=DESKTOP-Q5N7L53\\SQLEXPRESS;Database=todoapp;Trusted_Connection=True;";
+            var connection = "Data Source = ./wwwroot/App_Data/todoapp.db";
+            services.AddDbContext<TodoappContext>(options => options.UseSqlite(connection));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

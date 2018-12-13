@@ -2,9 +2,9 @@
   list works!
 </p>
 
-<p *ngIf="!listss"><em>Loading...</em></p>
+<p *ngIf="!lists"><em>Loading...</em></p>
 
-<table class='table' *ngIf="listss">
+<table class='table' *ngIf="lists">
   <thead>
     <tr>
       <th>id</th>
@@ -14,30 +14,26 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let list of listss">
+    <tr *ngFor="let list of lists">
       <td>{{ list.id }}</td>
       <td>{{ list.name }}</td>
       <ng-container *ngFor="let task of taskss">
-      <td *ngIf="task.listid == list.id">{{task.desc}}</td>
-      <</ng-container>
+        <ul *ngIf="task.listid == list.id">{{task.desc}}</ul>
+      </ng-container>
     </tr>
   </tbody>
 </table>
 
-<table class='table' *ngIf="listss">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>tasks</th>
-      <th>Commands</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let list of listss">
-      <td>{{ list.id }}</td>
-      <td>{{ list.name }}</td>
-      <ul *ngFor="let task of taskss">{{task.desc}}</ul>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <label>
+    List id:
+    <input #listId />
+  </label>
+  <label>
+    List name:
+    <input #listName />
+  </label>
+  <button (click)="add(listId.value,listName.value); listName.value=''">
+    add
+  </button>
+</div>
